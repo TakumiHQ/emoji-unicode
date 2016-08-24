@@ -38,7 +38,11 @@ import io
 
 from .utils import code_point_to_unicode
 
-
+SKIP = [  # Skip lines from emoji-data starting with these
+    u'0023',  # Number sign (#)
+    u'002A',  # Asterisk (*)
+    u'0030',  # Digit zero (0) and up to digit nine (9)
+]
 DIR = os.path.dirname(__file__)
 
 
@@ -62,7 +66,9 @@ def parse():
         return [
             _parse(line)
             for line in fh.readlines()
-            if not line.startswith('#')
+            if (not line.startswith('#')
+                and len(line.strip())
+                and line[:4] not in SKIP)
         ]
 
 
