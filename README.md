@@ -5,12 +5,13 @@
 [![pypi](https://img.shields.io/pypi/v/emoji-unicode.svg?style=flat-square)](https://pypi.python.org/pypi/emoji-unicode)
 [![licence](https://img.shields.io/pypi/l/emoji-unicode.svg?style=flat-square)](https://raw.githubusercontent.com/nitely/emoji-unicode/master/LICENSE)
 
-Replace unicode emojis in a text. Supports *Unicode 8* standard.
+Replace unicode emojis in a text. Supports *Unicode 9* standard.
 
 ## Compatibility
 
 * Python 2.7 ([wide-build](http://emoji-unicode.readthedocs.org/en/latest/python2.html)),
 3.3, 3.4 and 3.5 (recommended)
+* Python 2.7 (narrow-build) is partially supported. Skin modifiers and flags are not handled correctly
 
 ## Install
 
