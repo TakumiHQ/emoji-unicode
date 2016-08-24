@@ -1,16 +1,22 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
+import sys
 
 
 CODE_POINTS = '{{code_points}}'  # Template string
+NARROW = sys.maxunicode == 0xFFFF
 
 TXT_VARIATION = '\uFE0E'
 EMO_VARIATION = '\uFE0F'
-FITZ_MODIFIER = '\U0001F3FB-\U0001F3FF'
 KC_MODIFIER = '\u20E3'
 ZWJ = '\u200D'
-FLAGS = '\U0001F1E6-\U0001F1FF'
+if NARROW:
+    FLAGS = '\ud83c[\udde6-\uddff]'
+    FITZ_MODIFIER = '\ud83c[\udffb-\udfff]'
+else:
+    FLAGS = '\U0001F1E6-\U0001F1FF'
+    FITZ_MODIFIER = '\U0001F3FB-\U0001F3FF'
 KEY_CAPS = '0-9\*#'
 
 RE_PATTERN_TEMPLATE = (

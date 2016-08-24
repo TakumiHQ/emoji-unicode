@@ -1,3 +1,10 @@
+0.3
+---
+
+* Updates to latest unicode spec.
+* Adds support for narrow python build
+* Adds parser.get_emojis function.
+
 0.2
 ---
 

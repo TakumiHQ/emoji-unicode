@@ -2,10 +2,14 @@
 
 from __future__ import unicode_literals
 import re
+import sys
 
 from .models import Emoji, JOINER_CHARS
 from .utils import code_point_to_unicode
-from .pattern import RE_PATTERN_TEMPLATE
+if sys.maxunicode == 0xFFFF:
+    from .pattern_narrow import RE_PATTERN_TEMPLATE
+else:
+    from .pattern import RE_PATTERN_TEMPLATE
 
 PATTERN = re.compile(RE_PATTERN_TEMPLATE)
 
@@ -47,3 +51,16 @@ def normalize(code_points, separator='-'):
         for c in code_points.split(separator)
         if code_point_to_unicode(c) not in JOINER_CHARS
     )
+
+
+def get_emojis(txt, ignore_fitzpatrick=False):
+    """
+    Return a list of all emojis found in the text
+
+    :param str txt: Text source to be parsed
+    :param bool ignore_fitzpatrick: Wether to ignore the fitzpatrick\
+    skin modifier emojis
+    :return: List of all the emojis
+    :rtype: list
+    """
+    return PATTERN.findall(txt)
