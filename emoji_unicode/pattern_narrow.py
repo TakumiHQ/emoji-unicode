@@ -11,8 +11,12 @@ TXT_VARIATION = '\uFE0E'
 EMO_VARIATION = '\uFE0F'
 KC_MODIFIER = '\u20E3'
 ZWJ = '\u200D'
-FLAGS = '\ud83c[\udde6-\uddff]'
-FITZ_MODIFIER = '\ud83c[\udffb-\udfff]'
+if NARROW:
+    FLAGS = '\ud83c[\udde6-\uddff]'
+    FITZ_MODIFIER = '\ud83c[\udffb-\udfff]'
+else:
+    FLAGS = '\U0001F1E6-\U0001F1FF'
+    FITZ_MODIFIER = '\U0001F3FB-\U0001F3FF'
 KEY_CAPS = '0-9\*#'
 
 RE_PATTERN_TEMPLATE = (
